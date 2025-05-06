@@ -4,8 +4,14 @@ using OfficeOpenXml;
 
 namespace Fantasy.Tools.ConfigTable;
 
-public sealed class ExcelWorksheets(ExcelExporter excelExporter)
+public sealed class ExcelWorksheets
 {
+    private ExcelExporter excelExporter;
+
+    public ExcelWorksheets(ExcelExporter excelExporter)
+    {
+        this.excelExporter = excelExporter;
+    }
     public bool TryGetValue(string worksheetName, out ExcelWorksheet excelWorksheet)
     {
         if (excelExporter.Worksheets.TryGetValue(worksheetName, out excelWorksheet))
